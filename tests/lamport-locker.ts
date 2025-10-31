@@ -120,4 +120,37 @@ describe("lamport-locker", () => {
     }
   });
 
+  it("Close vault account", async () => {
+    const user_initial_balance = (await provider.connection.getAccountInfo(provider.publicKey)).lamports;
+    const vault_initial_balance = (await provider.connection.getAccountInfo(vaultPDA)).lamports;
+
+    const vault_state_account = await provider.connection.getAccountInfo(vaultStatePDA);
+    const vault_state_rent = vault_state_account.lamports;
+
+    const tx = await program.methods.close()
+    .accountsPartial({
+      user: provider.publicKey,
+      vaultState: vaultStatePDA,
+      vault: vaultPDA,
+      systemProgram: anchor.web3.SystemProgram.programId
+    })
+    .rpc();
+    console.log("Your transaction signature", tx);
+    await provider.connection.confirmTransaction(tx, "confirmed");
+
+    const txDetails = await provider.connection.getTransaction(tx, {
+      commitment: "confirmed",
+      maxSupportedTransactionVersion: 0
+    });
+  
+    const fee = txDetails.meta.fee;
+
+    const vault_acc = await provider.connection.getAccountInfo(vaultPDA)
+    const user_final_balance = (await provider.connection.getAccountInfo(provider.publicKey)).lamports;
+
+    expect(user_final_balance).to.equal(user_initial_balance + vault_initial_balance + vault_state_rent - fee);
+    expect(vault_acc).to.equal(null)
+
+  });
+
 });
