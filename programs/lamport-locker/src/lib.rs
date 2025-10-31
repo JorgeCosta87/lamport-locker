@@ -29,4 +29,10 @@ pub mod lamport_locker {
 
         Ok(())
     }
+
+    pub fn close(ctx: Context<Close>) -> Result<()> {
+        ctx.accounts.close()?;
+
+        Ok(())
+    }
 }
