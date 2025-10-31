@@ -13,7 +13,7 @@ pub mod lamport_locker {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        ctx.accounts.initialize(ctx.bumps)?;
+        ctx.accounts.initialize(&ctx.bumps)?;
 
         Ok(())
     }

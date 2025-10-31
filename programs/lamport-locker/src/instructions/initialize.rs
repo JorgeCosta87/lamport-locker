@@ -28,7 +28,7 @@ pub struct Initialize<'info> {
 }
 
 impl<'info> Initialize<'info> {
-    pub fn initialize(&mut self, bumps: InitializeBumps) -> Result<()> {
+    pub fn initialize(&mut self, bumps: &InitializeBumps) -> Result<()> {
         let rent_exempt = Rent::get()?.minimum_balance(self.vault.to_account_info().data_len());
 
         let cpi_program = self.system_program.to_account_info();
