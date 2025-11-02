@@ -13,7 +13,15 @@ A Solana program built with Anchor that allows users to create vault accounts, d
 
 ### Vault Account with SOL
 
-![Vault Account](docs/vault_token.png)
+![Vault Account](docs/vault.png)
+
+**Transaction of locking the tokens:**
+[2Uysq81eAUJdez3gc1pEt13AEcdoWNiLcnQiL561edj4b9M7rK6utjivRzvcysTD2Y8kXi3jLpPARjF5DtEFc93v](https://explorer.solana.com/tx/2Uysq81eAUJdez3gc1pEt13AEcdoWNiLcnQiL561edj4b9M7rK6utjivRzvcysTD2Y8kXi3jLpPARjF5DtEFc93v?cluster=devnet)
+
+### Program ID
+
+[Fsqxbxgpm1rP2gWoXxmm5otdJmjCBE2GG39G1TaL9u4K](https://explorer.solana.com/address/Fsqxbxgpm1rP2gWoXxmm5otdJmjCBE2GG39G1TaL9u4K?cluster=devnet)
+
 
 ### Example Transactions
 
@@ -115,7 +123,3 @@ Run tests with:
 ```bash
 anchor test
 ```
-
-## Program ID
-
-[Fsqxbxgpm1rP2gWoXxmm5otdJmjCBE2GG39G1TaL9u4K](https://explorer.solana.com/address/Fsqxbxgpm1rP2gWoXxmm5otdJmjCBE2GG39G1TaL9u4K?cluster=devnet)

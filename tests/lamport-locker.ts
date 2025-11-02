@@ -35,10 +35,6 @@ describe("lamport-locker", () => {
 
     const vaultStateAcc = await program.account.vaultState.fetch(vaultStatePDA);
 
-    console.log("vaultStateAcc: ", vaultStateAcc);
-    console.log("Expected stateBump:", stateBump); //255?
-    console.log("Expected vaultBump:", vaultBump); 
-
     expect(vaultStateAcc.stateBump).to.equal(stateBump);
     expect(vaultStateAcc.vaultBump).to.equal(vaultBump);
   });
